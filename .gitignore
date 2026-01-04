@@ -1,0 +1,236 @@
+# ========================================
+# Empathy Engine - .gitignore
+# ========================================
+
+# ========================================
+# Python
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+pip-wheel-metadata/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ========================================
+# Virtual Environments
+# ========================================
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.conda/
+conda-env/
+
+# ========================================
+# IDEs and Editors
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+.spyderproject
+.spyproject
+.ropeproject
+
+# ========================================
+# OS Generated Files
+# ========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ========================================
+# Environment Variables
+# ========================================
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# ========================================
+# ML Models and Training Artifacts
+# (Large binary files - should not be in git)
+# ========================================
+# Saved models directory
+saved_models/
+backend/saved_models/
+
+# Training results and checkpoints
+training/results/
+training/results_t5/
+backend/training/results/
+backend/training/results_t5/
+**/checkpoint-*/
+
+# Model file formats
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.weights
+
+# Hugging Face cache
+.cache/
+huggingface/
+
+# ========================================
+# Vector Database (Chroma)
+# ========================================
+chroma_data/
+backend/chroma_data/
+*.sqlite3
+
+# ========================================
+# Database Files
+# ========================================
+*.db
+*.sqlite
+
+# ========================================
+# Data Files
+# (Comment out lines below if you want to track data)
+# ========================================
+# data/
+# *.csv
+
+# ========================================
+# Jupyter Notebook
+# ========================================
+.ipynb_checkpoints/
+*.ipynb
+profile_default/
+ipython_config.py
+
+# ========================================
+# Streamlit
+# ========================================
+.streamlit/secrets.toml
+
+# ========================================
+# Testing
+# ========================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+nosetests.xml
+
+# ========================================
+# Logs and Temporary Files
+# ========================================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+
+# ========================================
+# Type Checking (MyPy, Pyre, pytype)
+# ========================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# ========================================
+# Cython
+# ========================================
+cython_debug/
+*.c
+*.cpp
+
+# ========================================
+# Distribution / Packaging
+# ========================================
+*.manifest
+*.spec
+
+# ========================================
+# Installer Logs
+# ========================================
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ========================================
+# Unit Test / Coverage Reports
+# ========================================
+.cache/
+nosetests.xml
+coverage/
+
+# ========================================
+# Translations
+# ========================================
+*.mo
+*.pot
+
+# ========================================
+# Sphinx Documentation
+# ========================================
+docs/_build/
+
+# ========================================
+# Celery
+# ========================================
+celerybeat-schedule
+celerybeat.pid
+
+# ========================================
+# Misc
+# ========================================
+*.sage.py
+.webassets-cache
+.scrapy
+target/
+.ipynb_checkpoints
+.python-version
+Pipfile.lock
