@@ -44,4 +44,4 @@ def generate_rewrite(text: str, style: str = "gentle") -> str:
         )
 
     result = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return result
+    return result 
