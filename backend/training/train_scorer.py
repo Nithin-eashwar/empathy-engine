@@ -1,6 +1,7 @@
 import pandas as pd
 import torch
 from datasets import Dataset
+from transformers import EarlyStoppingCallback 
 from transformers import (
     DistilBertTokenizer, 
     DistilBertForSequenceClassification, 
@@ -13,7 +14,7 @@ from sklearn.model_selection import train_test_split
 DATA_PATH = "../data/synthetic_dataset.csv"
 MODEL_NAME = "distilbert-base-uncased"
 OUTPUT_DIR = "../saved_models/empathy_scorer"
-NUM_EPOCHS = 3 
+NUM_EPOCHS = 15 
 BATCH_SIZE = 8
 
 def main():
@@ -67,16 +68,18 @@ def main():
 
     # 5. Define Training Arguments
     training_args = TrainingArguments(
-        output_dir="./results",
-        num_train_epochs=NUM_EPOCHS,
-        per_device_train_batch_size=BATCH_SIZE,
-        per_device_eval_batch_size=BATCH_SIZE,
-        eval_strategy="epoch",
-        save_strategy="epoch",
-        logging_dir="./logs",
-        logging_steps=10,
-        load_best_model_at_end=True
-    )
+    output_dir="./results",
+    num_train_epochs=15,             # Set this high (e.g., 10 or 15)
+    per_device_train_batch_size=8,
+    per_device_eval_batch_size=8,
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    logging_dir="./logs",
+    logging_steps=10,
+    load_best_model_at_end=True,     # REQUIRED for Early Stopping
+    metric_for_best_model="eval_loss",
+    greater_is_better=False
+)
 
     # 6. Initialize Trainer
     trainer = Trainer(
@@ -84,6 +87,7 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
     print("🚀 Starting Training...")

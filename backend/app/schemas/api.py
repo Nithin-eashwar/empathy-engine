@@ -6,7 +6,9 @@ class ProcessRequest(BaseModel):
     conversation_id: Optional[int] = None
     sender: str = "user"
     text: str
-    target_style: str = "gentle" 
+    target_style: str = "gentle"
+    style: str = "Diplomat"  # Persona style: Diplomat, Gen Z, Executive, Victorian
+
 
 # --- OUTPUT COMPONENTS ---
 class Issue(BaseModel):
@@ -37,3 +39,18 @@ class ProcessResponse(BaseModel):
     empathy_scores: EmpathyScores
     issues: List[Issue]
     rewrites: List[RewriteOption]
+
+
+# --- FEEDBACK (RLHF) ---
+class FeedbackRequest(BaseModel):
+    """Request model for RLHF feedback submission"""
+    message_id: str
+    rating: int  # 1 for positive, -1 for negative
+    user_correction: Optional[str] = None  # User's improved version (for negative feedback)
+
+
+class FeedbackResponse(BaseModel):
+    """Response model for feedback submission"""
+    success: bool
+    message: str
+    feedback_id: str

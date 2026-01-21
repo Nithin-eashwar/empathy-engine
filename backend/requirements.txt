@@ -6,4 +6,3 @@ chromadb>=0.4.0
 sentence-transformers
 torch
 python-dotenv
-emoji
