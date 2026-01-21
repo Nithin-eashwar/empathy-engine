@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400, initial-scale=1.0">
+  <title>Empathy Engine</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">💎</span>
+        <h1>Empathy Engine</h1>
+      </div>
+      <div class="status-indicator" id="statusIndicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Ready</span>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-section">
+      <label for="textInput">Analyze Text</label>
+      <textarea 
+        id="textInput" 
+        placeholder="Select text on any page, or paste text here to analyze..."
+        rows="4"
+      ></textarea>
+      <div class="input-actions">
+        <!-- Custom Dropdown -->
+        <div class="custom-dropdown" id="styleDropdown">
+          <button class="dropdown-toggle" id="dropdownToggle" type="button">
+            <span class="dropdown-icon">🎭</span>
+            <span class="dropdown-label" id="dropdownLabel">Diplomat</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item active" data-value="Diplomat" data-icon="🎭">
+              <span class="item-icon">🎭</span>
+              <div class="item-content">
+                <span class="item-label">Diplomat</span>
+                <span class="item-desc">Professional & tactful</span>
+              </div>
+            </div>
+            <div class="dropdown-item" data-value="Gen Z" data-icon="⚡">
+              <span class="item-icon">⚡</span>
+              <div class="item-content">
+                <span class="item-label">Gen Z</span>
+                <span class="item-desc">Casual & trendy</span>
+              </div>
+            </div>
+            <div class="dropdown-item" data-value="Executive" data-icon="💼">
+              <span class="item-icon">💼</span>
+              <div class="item-content">
+                <span class="item-label">Executive</span>
+                <span class="item-desc">Formal & authoritative</span>
+              </div>
+            </div>
+            <div class="dropdown-item" data-value="Victorian" data-icon="🎩">
+              <span class="item-icon">🎩</span>
+              <div class="item-content">
+                <span class="item-label">Victorian</span>
+                <span class="item-desc">Elegant & eloquent</span>
+              </div>
+            </div>
+          </div>
+          <!-- Hidden input to store value -->
+          <input type="hidden" id="styleSelect" value="Diplomat">
+        </div>
+        <button id="analyzeBtn" class="btn-primary">
+          <span class="btn-icon">🔍</span>
+          Analyze
+        </button>
+      </div>
+    </section>
+
+    <!-- Loading State -->
+    <section class="loading-section hidden" id="loadingSection">
+      <div class="loader">
+        <div class="loader-ring"></div>
+        <p>Analyzing empathy...</p>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section hidden" id="resultsSection">
+      <!-- Empathy Scores -->
+      <div class="scores-card">
+        <h2>Empathy Scores</h2>
+        <div class="scores-grid">
+          <div class="score-item">
+            <div class="score-label">Warmth</div>
+            <div class="score-bar">
+              <div class="score-fill" id="warmthScore" style="--score: 0%"></div>
+            </div>
+            <div class="score-value" id="warmthValue">0%</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Validation</div>
+            <div class="score-bar">
+              <div class="score-fill" id="validationScore" style="--score: 0%"></div>
+            </div>
+            <div class="score-value" id="validationValue">0%</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Perspective</div>
+            <div class="score-bar">
+              <div class="score-fill" id="perspectiveScore" style="--score: 0%"></div>
+            </div>
+            <div class="score-value" id="perspectiveValue">0%</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Supportiveness</div>
+            <div class="score-bar">
+              <div class="score-fill" id="supportivenessScore" style="--score: 0%"></div>
+            </div>
+            <div class="score-value" id="supportivenessValue">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issues -->
+      <div class="issues-card" id="issuesCard">
+        <h2>⚠️ Issues Detected</h2>
+        <div class="issues-list" id="issuesList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Rewrite Suggestion -->
+      <div class="rewrite-card">
+        <h2>✨ Suggested Rewrite</h2>
+        <div class="rewrite-content" id="rewriteContent">
+          <!-- Populated by JS -->
+        </div>
+        <div class="rewrite-actions">
+          <button id="copyBtn" class="btn-secondary">
+            <span>📋</span> Copy
+          </button>
+          <div class="feedback-btns">
+            <button id="thumbsUp" class="feedback-btn" title="Good rewrite">👍</button>
+            <button id="thumbsDown" class="feedback-btn" title="Needs improvement">👎</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error State -->
+    <section class="error-section hidden" id="errorSection">
+      <div class="error-content">
+        <span class="error-icon">❌</span>
+        <p id="errorMessage">Something went wrong</p>
+        <button id="retryBtn" class="btn-secondary">Retry</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Powered by AI • <a href="#" id="settingsLink">Settings</a></p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

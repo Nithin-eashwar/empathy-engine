@@ -8,7 +8,7 @@ app = FastAPI(title=settings.PROJECT_NAME)
 # Enable CORS for frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # Allow React
+    allow_origins=["http://localhost:3000", "http://localhost:5173", "chrome-extension://*"],  # Allow React & Chrome Extension
 
     allow_credentials=True,
     allow_methods=["*"],  # Allow POST, GET, OPTIONS
